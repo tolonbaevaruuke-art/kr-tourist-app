@@ -8,80 +8,101 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Шапка -->
-        <header class="header">
-            <div class="logo">
-                <span class="logo-icon">🗺️</span>
-                <div>
-                    <h1>KG Travel</h1>
-                    <p class="subtitle">Единый гид для туристов в Кыргызстане</p>
+    <div class="app-layout">
+        <!-- ЛЕВАЯ КОЛОНКА: Основной функционал -->
+        <div class="main-panel">
+            <header class="header">
+                <div class="logo">
+                    <span class="logo-icon">🏔️</span>
+                    <div>
+                        <h1>KG Travel</h1>
+                        <p class="subtitle">Твой персональный гид и локатор по Кыргызстану</p>
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
 
-        <!-- Навигационные вкладки -->
-        <nav class="nav-tabs">
-            <button class="tab-btn active" data-tab="search">🔍 Поиск</button>
-            <button class="tab-btn" data-tab="transport">🚌 Транспорт</button>
-            <button class="tab-btn" data-tab="currency">💱 Валюта</button>
-            <button class="tab-btn" data-tab="weather">☀️ Погода</button>
-            <button class="tab-btn" data-tab="ai">🤖 ИИ-агент</button>
-        </nav>
+            <!-- Основные кнопки навигации -->
+            <nav class="nav-tabs">
+                <button class="btn-primary active" data-tab="search">🔍 Поиск и Места</button>
+                <button class="btn-primary" data-tab="transport">🚌 Транспорт</button>
+                <button class="btn-primary" data-tab="weather">☀️ Погода</button>
+                <button class="btn-primary" data-tab="map">🗺️ Карта & 2GIS</button>
+            </nav>
 
-        <!-- Основной контент -->
-        <main class="main-content">
-            <!-- Вкладка поиска -->
+            <!-- Контент поиска -->
             <section id="tab-search" class="tab-content active">
                 <div class="search-box">
-                    <input type="text" id="search-input" placeholder="Куда хотите поехать? (например: Иссык-Куль)...">
+                    <input type="text" id="search-input" placeholder="Найти отель, ресторан, ущелье или парк...">
                     <div class="filters">
-                        <button class="filter-btn active" data-filter="all">🔥 Все места</button>
-                        <button class="filter-btn" data-filter="popular">⭐ Популярное</button>
-                        <button class="filter-btn" data-filter="nature">🏔️ Природа</button>
-                        <button class="filter-btn" data-filter="hotel">🏨 Отели</button>
-                        <button class="filter-btn" data-filter="food">🍽️ Рестораны</button>
+                        <button class="btn-secondary active" data-filter="all">🔥 Все места</button>
+                        <button class="btn-secondary" data-filter="popular">⭐ Популярное</button>
+                        <button class="btn-secondary" data-filter="nature">🏔️ Природа</button>
+                        <button class="btn-secondary" data-filter="hotel">🏨 Отели</button>
+                        <button class="btn-secondary" data-filter="food">🍽️ Рестораны</button>
                     </div>
                 </div>
 
                 <div class="results-header">
-                    <h2>Результаты <span id="results-count">(0)</span></h2>
+                    <h2>Найдено мест <span id="results-count">(0)</span></h2>
                 </div>
 
                 <div class="cards-grid" id="cards-container">
-                    <!-- Карточки загружаются через app.js -->
+                    <!-- Карточки генерируются через JS -->
                 </div>
             </section>
 
-            <!-- Прочие вкладки (заглушки) -->
-            <section id="tab-transport" class="tab-content">
-                <div class="info-card">
-                    <h2>🚌 Общественный транспорт и такси</h2>
-                    <p>Информация о маршрутках, межгородских автолайнерах и службах такси (Яндекс, Namba) в Бишкеке и регионах.</p>
-                </div>
-            </section>
-
-            <section id="tab-currency" class="tab-content">
-                <div class="info-card">
-                    <h2>💱 Курс валют (KGS)</h2>
-                    <p>Курсы Сома к USD, EUR, RUB и KZT в обменных пунктах Моссовета.</p>
-                </div>
-            </section>
-
+            <!-- Контент погоды -->
             <section id="tab-weather" class="tab-content">
                 <div class="info-card">
-                    <h2>☀️ Погода в регионах</h2>
-                    <p>Прогноз погоды для Бишкека, Оша, Чолпон-Аты и Нарына.</p>
+                    <h2>☀️ Погода в регионах Кыргызстана</h2>
+                    <div class="weather-grid">
+                        <div class="weather-item"><span>Бишкек</span> <strong>+22°C ☀️ Солнечно</strong></div>
+                        <div class="weather-item"><span>Ош</span> <strong>+25°C ☀️ Ясно</strong></div>
+                        <div class="weather-item"><span>Иссык-Куль (Чолпон-Ата)</span> <strong>+18°C ⛅ Переменная облачность</strong></div>
+                        <div class="weather-item"><span>Каракол</span> <strong>+15°C 🌦️ Небольшой дождь</strong></div>
+                        <div class="weather-item"><span>Нарын</span> <strong>+12°C 💨 Облачно, ветер</strong></div>
+                    </div>
                 </div>
             </section>
 
-            <section id="tab-ai" class="tab-content">
+            <!-- Контент транспорта -->
+            <section id="tab-transport" class="tab-content">
                 <div class="info-card">
-                    <h2>🤖 ИИ-Помощник по Кыргызстану</h2>
-                    <p>Задайте вопрос гиду: "Что посмотреть за 3 дня на Иссык-Куле?"</p>
+                    <h2>🚌 Транспорт и такси</h2>
+                    <p>• <strong>Городской транспорт:</strong> Автобусы и троллейбусы Бишкека (оплата картой TULPAR или 2GIS).</p>
+                    <p>• <strong>Такси:</strong> Яндекс Go, Namba Taxi, SMS Taxi.</p>
+                    <p>• <strong>Межгород:</strong> Западный автовокзал Бишкека (маршрутки на Иссык-Куль, Нарын, Ош).</p>
                 </div>
             </section>
-        </main>
+
+            <!-- Контент карты -->
+            <section id="tab-map" class="tab-content">
+                <div class="info-card">
+                    <h2>🗺️ Интерактивная карта 2GIS</h2>
+                    <p>Используйте встроенную карту для поиска точных адресов и маршрутов:</p>
+                    <iframe class="gis-map" src="https://2gis.kg/bishkek" title="2GIS Map"></iframe>
+                </div>
+            </section>
+        </div>
+
+        <!-- ПРАВАЯ КОЛОНКА: ИИ-Агент -->
+        <aside class="ai-panel">
+            <div class="ai-header">
+                <h3>🤖 ИИ-Консьерж по KG</h3>
+                <p>Знает всё о погоде, ресторанах, парках и 2GIS</p>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+                <div class="message ai">
+                    Салам! Я твой ИИ-помощник по Кыргызстану. Спроси меня о погоде, лучших ресторанах, парках Бишкека или как найти место через 2GIS! 🏔️
+                </div>
+            </div>
+
+            <form class="chat-input-area" id="chat-form">
+                <input type="text" id="chat-input" placeholder="Задай вопрос ИИ..." required>
+                <button type="submit" class="btn-primary send-btn">➔</button>
+            </form>
+        </aside>
     </div>
 
     <script src="app.js"></script>

@@ -6,20 +6,28 @@
 }
 
 body {
-  background-color: #0f1115;
-  color: #e2e8f0;
+  background-color: #FCEEC9; /* Dutch White */
+  color: #2D261E;
   min-height: 100vh;
   padding: 20px;
 }
 
-.app-container {
-  max-width: 900px;
+.app-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
-/* Шапка */
+/* ЛЕВАЯ ПАНЕЛЬ */
+.main-panel {
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .logo {
@@ -29,155 +37,129 @@ body {
 }
 
 .logo-icon {
-  font-size: 32px;
+  font-size: 36px;
 }
 
 .logo h1 {
-  font-size: 24px;
-  font-weight: 700;
-  color: #ffffff;
+  font-size: 28px;
+  color: #8B0000;
 }
 
 .subtitle {
   font-size: 14px;
-  color: #94a3b8;
+  color: #6B5B45;
 }
 
-/* Вкладки */
+/* КНОПКИ */
 .nav-tabs {
   display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  margin-bottom: 24px;
-}
-
-.tab-btn {
-  background: #1a1d24;
-  border: 1px solid #2e3545;
-  color: #94a3b8;
-  padding: 10px 18px;
-  border-radius: 20px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-}
-
-.tab-btn:hover {
-  background: #252a36;
-  color: #fff;
-}
-
-.tab-btn.active {
-  background: #3b82f6;
-  color: #fff;
-  border-color: #3b82f6;
-}
-
-/* Поиск и фильтры */
-.search-box {
-  background: #161920;
-  border: 1px solid #262c3a;
-  padding: 20px;
-  border-radius: 16px;
-  margin-bottom: 24px;
-}
-
-#search-input {
-  width: 100%;
-  padding: 14px 18px;
-  background: #0f1115;
-  border: 1px solid #2e3545;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 15px;
-  margin-bottom: 16px;
-  outline: none;
-}
-
-#search-input:focus {
-  border-color: #3b82f6;
-}
-
-.filters {
-  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
-  gap: 8px;
 }
 
-.filter-btn {
-  background: #202532;
+/* Главные кнопки (#E4281F) */
+.btn-primary {
+  background-color: #E4281F;
+  color: #FFFFFF;
   border: none;
-  color: #94a3b8;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #C01E16;
+}
+
+.btn-primary.active {
+  background-color: #A0140D;
+  box-shadow: 0 4px 10px rgba(228, 40, 31, 0.3);
+}
+
+/* Второстепенные кнопки (#FFBE54) */
+.btn-secondary {
+  background-color: #FFBE54;
+  color: #3D2B00;
+  border: none;
   padding: 8px 14px;
-  border-radius: 8px;
+  border-radius: 10px;
+  font-weight: 500;
   font-size: 13px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.filter-btn:hover {
-  color: #fff;
+.btn-secondary:hover {
+  background-color: #EFA938;
 }
 
-.filter-btn.active {
-  background: #10b981;
-  color: #fff;
+.btn-secondary.active {
+  background-color: #E4281F;
+  color: #FFFFFF;
 }
 
-/* Карточки */
+/* ПОИСК И КАРТОЧКИ */
+.search-box {
+  background: #FFF8E7;
+  border: 2px solid #EAD8A7;
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+#search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #EAD8A7;
+  border-radius: 10px;
+  background: #FFFFFF;
+  font-size: 15px;
+  margin-bottom: 12px;
+  outline: none;
+}
+
+#search-input:focus {
+  border-color: #E4281F;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .results-header {
-  margin-bottom: 16px;
-}
-
-.results-header h2 {
-  font-size: 18px;
-  color: #cbd5e1;
+  margin-bottom: 12px;
 }
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 16px;
 }
 
 .card {
-  background: #161920;
-  border: 1px solid #262c3a;
+  background: #FFFFFF;
+  border: 1px solid #EAD8A7;
   border-radius: 14px;
   padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-  border-color: #3b82f6;
-}
-
-.card-tag {
-  align-self: flex-start;
-  font-size: 11px;
-  padding: 4px 8px;
-  border-radius: 6px;
-  background: #252a36;
-  color: #60a5fa;
-  margin-bottom: 10px;
-  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .card h3 {
-  font-size: 16px;
+  color: #8B0000;
   margin-bottom: 6px;
-  color: #fff;
 }
 
 .card p {
   font-size: 13px;
-  color: #94a3b8;
-  line-height: 1.4;
+  color: #554838;
   margin-bottom: 12px;
 }
 
@@ -185,12 +167,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
-  color: #10b981;
-  font-weight: 600;
 }
 
-/* Контент вкладок */
+.gis-link {
+  color: #E4281F;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.gis-link:hover {
+  text-decoration: underline;
+}
+
+/* ИНФО-КАРТОЧКИ И КАРТА */
 .tab-content {
   display: none;
 }
@@ -200,16 +190,122 @@ body {
 }
 
 .info-card {
-  background: #161920;
-  border: 1px solid #262c3a;
-  padding: 24px;
+  background: #FFFFFF;
   border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #EAD8A7;
 }
 
-.info-card h2 {
+.weather-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.weather-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #FFF8E7;
+  border-radius: 8px;
+}
+
+.gis-map {
+  width: 100%;
+  height: 380px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 12px;
+}
+
+/* ПРАВАЯ КОЛОНКА (ИИ ЧАТ) */
+.ai-panel {
+  background: #FFFFFF;
+  border: 2px solid #EAD8A7;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 40px);
+  position: sticky;
+  top: 20px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.ai-header {
+  border-bottom: 2px solid #FCEEC9;
+  padding-bottom: 12px;
   margin-bottom: 12px;
 }
 
-.info-card p {
-  color: #94a3b8;
+.ai-header h3 {
+  color: #E4281F;
+  font-size: 18px;
+}
+
+.ai-header p {
+  font-size: 12px;
+  color: #7A6B56;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 4px;
+  margin-bottom: 12px;
+}
+
+.message {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  max-width: 85%;
+}
+
+.message.ai {
+  background: #FFF8E7;
+  border: 1px solid #EAD8A7;
+  align-self: flex-start;
+}
+
+.message.user {
+  background: #E4281F;
+  color: #FFFFFF;
+  align-self: flex-end;
+}
+
+.chat-input-area {
+  display: flex;
+  gap: 8px;
+}
+
+#chat-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 2px solid #EAD8A7;
+  border-radius: 10px;
+  outline: none;
+}
+
+#chat-input:focus {
+  border-color: #E4281F;
+}
+
+.send-btn {
+  padding: 10px 14px;
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 900px) {
+  .app-layout {
+      grid-template-columns: 1fr;
+  }
+  .ai-panel {
+      height: 500px;
+      position: static;
+  }
 }
