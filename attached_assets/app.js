@@ -137,20 +137,38 @@ function setupAIChat() {
     const input = document.getElementById('chat-input');
     const chatBox = document.getElementById('chat-messages');
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const query = input.value.trim();
         if (!query) return;
 
-        // Сообщение пользователя
         appendMessage(query, 'user');
         input.value = '';
+        input.disabled = true;
+        form.querySelector('button').disabled = true;
 
-        // Имитация ответа ИИ
-        setTimeout(() => {
-            const reply = getAIResponse(query);
-            appendMessage(reply, 'ai');
-        }, 500);
+        const loadingMessage = appendMessage('Думаю…', 'ai');
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    messages: [{ role: 'user', content: query }]
+                })
+            });
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data.error || 'Ошибка сервера');
+            }
+            loadingMessage.textContent = data.reply;
+        } catch (error) {
+            console.error('Chat request failed:', error);
+            loadingMessage.textContent = 'Не удалось получить ответ. Попробуйте ещё раз.';
+        } finally {
+            input.disabled = false;
+            form.querySelector('button').disabled = false;
+            input.focus();
+        }
     });
 
     function appendMessage(text, sender) {
@@ -159,6 +177,7 @@ function setupAIChat() {
         msgDiv.textContent = text;
         chatBox.appendChild(msgDiv);
         chatBox.scrollTop = chatBox.scrollHeight;
+        return msgDiv;
     }
 
     function getAIResponse(text) {
@@ -175,7 +194,9 @@ function setupAIChat() {
             return aiKnowledge.default;
         }
     }
-}// База мест с прямыми ссылками на 2GIS
+}
+
+/* Дублирующийся фрагмент ниже оставлен закомментированным для сохранения исходных данных.
 const locations = [
     {
         id: 1,
@@ -352,4 +373,4 @@ function setupAIChat() {
             return aiKnowledge.default;
         }
     }
-}
+}*/
