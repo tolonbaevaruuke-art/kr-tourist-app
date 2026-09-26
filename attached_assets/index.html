@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KG Travel — Единый гид по Кыргызстану</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Шапка -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🗺️</span>
+                <div>
+                    <h1>KG Travel</h1>
+                    <p class="subtitle">Единый гид для туристов в Кыргызстане</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Навигационные вкладки -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="search">🔍 Поиск</button>
+            <button class="tab-btn" data-tab="transport">🚌 Транспорт</button>
+            <button class="tab-btn" data-tab="currency">💱 Валюта</button>
+            <button class="tab-btn" data-tab="weather">☀️ Погода</button>
+            <button class="tab-btn" data-tab="ai">🤖 ИИ-агент</button>
+        </nav>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <!-- Вкладка поиска -->
+            <section id="tab-search" class="tab-content active">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Куда хотите поехать? (например: Иссык-Куль)...">
+                    <div class="filters">
+                        <button class="filter-btn active" data-filter="all">🔥 Все места</button>
+                        <button class="filter-btn" data-filter="popular">⭐ Популярное</button>
+                        <button class="filter-btn" data-filter="nature">🏔️ Природа</button>
+                        <button class="filter-btn" data-filter="hotel">🏨 Отели</button>
+                        <button class="filter-btn" data-filter="food">🍽️ Рестораны</button>
+                    </div>
+                </div>
+
+                <div class="results-header">
+                    <h2>Результаты <span id="results-count">(0)</span></h2>
+                </div>
+
+                <div class="cards-grid" id="cards-container">
+                    <!-- Карточки загружаются через app.js -->
+                </div>
+            </section>
+
+            <!-- Прочие вкладки (заглушки) -->
+            <section id="tab-transport" class="tab-content">
+                <div class="info-card">
+                    <h2>🚌 Общественный транспорт и такси</h2>
+                    <p>Информация о маршрутках, межгородских автолайнерах и службах такси (Яндекс, Namba) в Бишкеке и регионах.</p>
+                </div>
+            </section>
+
+            <section id="tab-currency" class="tab-content">
+                <div class="info-card">
+                    <h2>💱 Курс валют (KGS)</h2>
+                    <p>Курсы Сома к USD, EUR, RUB и KZT в обменных пунктах Моссовета.</p>
+                </div>
+            </section>
+
+            <section id="tab-weather" class="tab-content">
+                <div class="info-card">
+                    <h2>☀️ Погода в регионах</h2>
+                    <p>Прогноз погоды для Бишкека, Оша, Чолпон-Аты и Нарына.</p>
+                </div>
+            </section>
+
+            <section id="tab-ai" class="tab-content">
+                <div class="info-card">
+                    <h2>🤖 ИИ-Помощник по Кыргызстану</h2>
+                    <p>Задайте вопрос гиду: "Что посмотреть за 3 дня на Иссык-Куле?"</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
